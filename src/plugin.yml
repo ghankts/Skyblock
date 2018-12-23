@@ -1,0 +1,4 @@
+name: Skyblock
+version: 1.0
+main: me.lewis.skyblock.Main
+depend: [PermissionsEx]

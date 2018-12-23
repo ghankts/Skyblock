@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="L-Spigot">
+    <CLASSES>
+      <root url="jar://C:/Server/depend/L-Spigot.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://C:/Server/depend/L-Spigot.jar!/" />
+    </SOURCES>
+  </library>
+</component>
