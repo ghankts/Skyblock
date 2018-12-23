@@ -1,5 +1,8 @@
 package me.lewis.skyblock;
 
+import me.lewis.skyblock.commands.cmdIsland;
+import org.bukkit.WorldCreator;
+import org.bukkit.WorldType;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public class Skyblock extends JavaPlugin
@@ -23,6 +26,10 @@ public class Skyblock extends JavaPlugin
 
     public void registerCommands()
     {
+        getCommand("island").setExecutor(new cmdIsland(this));
+    }
 
+    public void createWorld()
+    {
     }
 }
