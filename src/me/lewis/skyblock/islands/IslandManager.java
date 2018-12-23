@@ -11,5 +11,12 @@ public class IslandManager
 
     public IslandManager(Skyblock plugin) {this.plugin = plugin;}
 
-    public HashMap<UUID, Island> map = new HashMap<>();
+    public HashMap<UUID, Island> islands;
+
+    public void IslandSize()
+    {
+        int x = (200);
+        int z = (200);
+        int y = 10;
+    }
 }
