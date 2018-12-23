@@ -2,3 +2,7 @@ name: Skyblock
 version: 1.0
 main: me.lewis.skyblock.Main
 depend: [PermissionsEx]
+commands:
+  island:
+    description: handles everything island related
+    aliases: [is, isl]
