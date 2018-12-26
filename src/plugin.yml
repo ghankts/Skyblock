@@ -19,3 +19,9 @@ commands:
   clearchat:
       description: clears the chat for every player on the server
       aliases: [cc]
+  stats:
+      description: gets a players stats
+      aliases: [kills]
+  balance:
+      description: gets your balance
+      aliases: [bal, money, mon, cashmoney]

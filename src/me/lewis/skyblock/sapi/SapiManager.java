@@ -1,5 +1,6 @@
 package me.lewis.skyblock.sapi;
 
+import me.lewis.skyblock.Skyblock;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
@@ -17,10 +18,10 @@ import java.util.UUID;
 
 public class SapiManager implements Listener
 {
-    public JavaPlugin plugin;
+    public Skyblock plugin;
     public Map<UUID, Sapi> sapis;
 
-    public SapiManager(JavaPlugin plugin)
+    public SapiManager(Skyblock plugin)
     {
         this.plugin = plugin;
         sapis = new HashMap();
@@ -49,6 +50,10 @@ public class SapiManager implements Listener
             public void run()
             {
                 Sapi sapi = new Sapi(p, title, border);
+                sapi.createUpdateEntry("online", ChatColor.WHITE + "Online: ",  ChatColor.GOLD.toString() + plugin.getPlayersOnline());
+                sapi.createUpdateEntry("kills", ChatColor.WHITE + "Kills: ", ChatColor.GOLD.toString() + plugin.getStatsManager().getStats(p).getKills());
+                sapi.createUpdateEntry("elo", ChatColor.WHITE + "Elo: ", ChatColor.GOLD.toString() + plugin.getStatsManager().getStats(p).getElo());
+                sapi.createUpdateEntry("balance", ChatColor.WHITE + "Balance: ", ChatColor.GOLD.toString() + plugin.getStatsManager().getStats(p).getBalance());
                 setSapi(p, sapi);
             }
         }, 5L);

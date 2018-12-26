@@ -22,10 +22,17 @@ public class joinListener implements Listener
     public void onJoin(PlayerJoinEvent e)
     {
         Player p = e.getPlayer();
+        if(!plugin.getStatsManager().hasStats(p)) plugin.getStatsManager().register(p);
         SapiManager sapiManager = plugin.getSapiManager();
         sapiManager.loadSapi(p,ChatColor.GOLD + ChatColor.BOLD.toString() + "Skyblock", ChatColor.GRAY + ChatColor.STRIKETHROUGH.toString() + "--------------------");
-        Sapi sapi = sapiManager.getSapi(p);
-        sapi.createUpdateEntry("online", ChatColor.WHITE + "Online: ",  ChatColor.GOLD + "" + plugin.getPlayersOnline());
+        Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(plugin, new Runnable() {
+            @Override
+            public void run()
+            {
+                Sapi sapi = sapiManager.getSapi(p);
+                sapi.updateEntry("online",ChatColor.GOLD + "" + plugin.getPlayersOnline());
+            }
+        }, 5L);
         plugin.updatePlayerCount();
     }
 }
