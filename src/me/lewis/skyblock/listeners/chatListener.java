@@ -1,8 +1,7 @@
 package me.lewis.skyblock.listeners;
 
 import me.lewis.skyblock.Skyblock;
-import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
+import me.lewis.skyblock.islands.IslandManager;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -18,6 +17,7 @@ public class chatListener implements Listener
 
     @EventHandler
     public void chatFormat(AsyncPlayerChatEvent e) {
+        IslandManager islandManager = plugin.getIslandManager();
         Player p = e.getPlayer();
         PermissionUser pexPlayer = PermissionsEx.getUser(p);
         String prefix = pexPlayer.getPrefix();

@@ -59,4 +59,11 @@ public class Island
             e.printStackTrace();
         }
     }
+
+    public String getPrestige()
+    {
+        File islandFile = new File(plugin.getDataFolder() + File.separator + "Islands", owner.toString() + ".yml");
+        YamlConfiguration islandYaml = YamlConfiguration.loadConfiguration(islandFile);
+        return islandYaml.get("prestige", prestige).toString();
+    }
 }

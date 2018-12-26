@@ -1,8 +1,21 @@
 name: Skyblock
+author: Wanged
 version: 1.0
-main: me.lewis.skyblock.Main
+main: me.lewis.skyblock.Skyblock
 depend: [PermissionsEx]
 commands:
   island:
     description: handles everything island related
     aliases: [is, isl]
+  msg:
+    description: sends a message to the specified player
+    aliases: [message, tell, talk, m, ms, send]
+  reply:
+      description: replys to the last player who messaged you
+      aliases: [r]
+  teleport:
+      descriptions: teleports you to the desired player
+      aliases: [tp]
+  clearchat:
+      description: clears the chat for every player on the server
+      aliases: [cc]
