@@ -30,6 +30,7 @@ public class StatsManager
         statYaml.set("kills", 0);
         statYaml.set("elo", 1000);
         statYaml.set("balance", 500.00);
+        statYaml.set("color", ChatColor.GRAY.toString());
         try
         {
             statYaml.save(statFile);

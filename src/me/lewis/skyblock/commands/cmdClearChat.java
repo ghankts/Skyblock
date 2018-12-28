@@ -6,6 +6,7 @@ import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
+import org.bukkit.entity.Player;
 
 public class cmdClearChat implements CommandExecutor
 {
@@ -17,85 +18,17 @@ public class cmdClearChat implements CommandExecutor
     {
         if(sender.hasPermission("skyblock.staff.clearchat"))
         {
-            Bukkit.broadcastMessage("");
-            Bukkit.broadcastMessage("");
-            Bukkit.broadcastMessage("");
-            Bukkit.broadcastMessage("");
-            Bukkit.broadcastMessage("");
-            Bukkit.broadcastMessage("");
-            Bukkit.broadcastMessage("");
-            Bukkit.broadcastMessage("");
-            Bukkit.broadcastMessage("");
-            Bukkit.broadcastMessage("");
-            Bukkit.broadcastMessage("");
-            Bukkit.broadcastMessage("");
-            Bukkit.broadcastMessage("");
-            Bukkit.broadcastMessage("");
-            Bukkit.broadcastMessage("");
-            Bukkit.broadcastMessage("");
-            Bukkit.broadcastMessage("");
-            Bukkit.broadcastMessage("");
-            Bukkit.broadcastMessage("");
-            Bukkit.broadcastMessage("");
-            Bukkit.broadcastMessage("");
-            Bukkit.broadcastMessage("");
-            Bukkit.broadcastMessage("");
-            Bukkit.broadcastMessage("");
-            Bukkit.broadcastMessage("");
-            Bukkit.broadcastMessage("");
-            Bukkit.broadcastMessage("");
-            Bukkit.broadcastMessage("");
-            Bukkit.broadcastMessage("");
-            Bukkit.broadcastMessage("");
-            Bukkit.broadcastMessage("");
-            Bukkit.broadcastMessage("");
-            Bukkit.broadcastMessage("");
-            Bukkit.broadcastMessage("");
-            Bukkit.broadcastMessage("");
-            Bukkit.broadcastMessage("");
-            Bukkit.broadcastMessage("");
-            Bukkit.broadcastMessage("");
-            Bukkit.broadcastMessage("");
-            Bukkit.broadcastMessage("");
-            Bukkit.broadcastMessage("");
-            Bukkit.broadcastMessage("");
-            Bukkit.broadcastMessage("");
-            Bukkit.broadcastMessage("");
-            Bukkit.broadcastMessage("");
-            Bukkit.broadcastMessage("");
-            Bukkit.broadcastMessage("");
-            Bukkit.broadcastMessage("");
-            Bukkit.broadcastMessage("");
-            Bukkit.broadcastMessage("");
-            Bukkit.broadcastMessage("");
-            Bukkit.broadcastMessage("");
-            Bukkit.broadcastMessage("");
-            Bukkit.broadcastMessage("");
-            Bukkit.broadcastMessage("");
-            Bukkit.broadcastMessage("");
-            Bukkit.broadcastMessage("");
-            Bukkit.broadcastMessage("");
-            Bukkit.broadcastMessage("");
-            Bukkit.broadcastMessage("");
-            Bukkit.broadcastMessage("");
-            Bukkit.broadcastMessage("");
-            Bukkit.broadcastMessage("");
-            Bukkit.broadcastMessage("");
-            Bukkit.broadcastMessage("");
-            Bukkit.broadcastMessage("");
-            Bukkit.broadcastMessage("");
-            Bukkit.broadcastMessage("");
-            Bukkit.broadcastMessage("");
-            Bukkit.broadcastMessage("");
-            Bukkit.broadcastMessage("");
-            Bukkit.broadcastMessage("");
-            Bukkit.broadcastMessage("");
-            Bukkit.broadcastMessage("");
-            Bukkit.broadcastMessage("");
-
-            Bukkit.broadcastMessage(ChatColor.GRAY + ChatColor.STRIKETHROUGH.toString() + "----------------------------------------");
-            Bukkit.broadcastMessage(ChatColor.GREEN + "Chat has been cleared by: " + ChatColor.YELLOW + sender.getName());
-            Bukkit.broadcastMessage(ChatColor.GRAY + ChatColor.STRIKETHROUGH.toString() + "----------------------------------------");
+            for(Player all : Bukkit.getServer().getOnlinePlayers())
+            {
+                if(!all.isOp())
+                {
+                    for(int i = 0; i>200; i++)
+                    {
+                        all.sendMessage("");
+                    }
+                    all.sendMessage(ChatColor.GREEN + "Chat has been cleared by: " + ChatColor.YELLOW + sender.getName());
+                }
+            }
             return false;
         }
         else sender.sendMessage(ChatColor.RED + "You do not have permission to do that!");

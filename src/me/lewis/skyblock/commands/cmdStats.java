@@ -2,12 +2,16 @@ package me.lewis.skyblock.commands;
 
 import me.lewis.skyblock.Skyblock;
 import me.lewis.skyblock.stats.StatsManager;
+import net.minecraft.server.v1_7_R4.EnumMobType;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
+import org.bukkit.Statistic;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
+import org.bukkit.entity.Creeper;
+import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
@@ -65,6 +69,26 @@ public class cmdStats implements CommandExecutor
             balancem.setLore(lore);
             balance.setItemMeta(balancem);
             statsGUI.setItem(4, balance);
+            lore.clear();
+
+            //CREEPER KILLS
+            ItemStack ckills = new ItemStack(Material.MONSTER_EGG, 1, (short)50);
+            ItemMeta ckillsm = ckills.getItemMeta();
+            ckillsm.setDisplayName(ChatColor.GOLD + "Creeper Kills");
+            lore.add(ChatColor.WHITE.toString() + p.getStatistic(Statistic.KILL_ENTITY, EntityType.CREEPER));
+            ckillsm.setLore(lore);
+            ckills.setItemMeta(ckillsm);
+            statsGUI.setItem(6, ckills);
+            lore.clear();
+
+            //ZOMBIE
+            ItemStack zkills = new ItemStack(Material.MONSTER_EGG, 1, (short)54);
+            ItemMeta zkillsm = ckills.getItemMeta();
+            zkillsm.setDisplayName(ChatColor.GOLD + "Zombie Kills");
+            lore.add(ChatColor.WHITE.toString() + p.getStatistic(Statistic.KILL_ENTITY, EntityType.ZOMBIE));
+            zkillsm.setLore(lore);
+            zkills.setItemMeta(zkillsm);
+            statsGUI.setItem(8, zkills);
             lore.clear();
 
             p.openInventory(statsGUI);

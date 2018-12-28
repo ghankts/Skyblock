@@ -5,6 +5,7 @@ import me.lewis.skyblock.islands.IslandManager;
 import me.lewis.skyblock.listeners.*;
 import me.lewis.skyblock.sapi.Sapi;
 import me.lewis.skyblock.sapi.SapiManager;
+import me.lewis.skyblock.shop.ShopManager;
 import me.lewis.skyblock.stats.StatsManager;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -19,6 +20,7 @@ public class Skyblock extends JavaPlugin
     public HashMap<Player, Player> lastmsg = new HashMap<Player, Player>();
     public SapiManager sapiManager;
     public StatsManager statsManager;
+    public ShopManager shopManager;
 
     public void onEnable()
     {
@@ -27,6 +29,8 @@ public class Skyblock extends JavaPlugin
         islandManager = new IslandManager(this);
         sapiManager = new SapiManager(this);
         statsManager = new StatsManager(this);
+        shopManager = new ShopManager(this);
+        getShopManager().registerConfig();
     }
 
     public void onDisable()
@@ -49,10 +53,11 @@ public class Skyblock extends JavaPlugin
         getCommand("island").setExecutor(new cmdIsland(this));
         getCommand("message").setExecutor(new cmdMessage(this));
         getCommand("reply").setExecutor(new cmdReply(this));
-        getCommand("teleport").setExecutor(new cmdTeleport(this));
         getCommand("clearchat").setExecutor(new cmdClearChat(this));
         getCommand("stats").setExecutor(new cmdStats(this));
         getCommand("balance").setExecutor(new cmdBalance(this));
+        getCommand("shop").setExecutor(new cmdBuy(this));
+        getCommand("namecolor").setExecutor(new cmdNameColor(this));
     }
 
     public int getPlayersOnline()
@@ -77,4 +82,5 @@ public class Skyblock extends JavaPlugin
     public IslandManager getIslandManager() { return islandManager; }
     public SapiManager getSapiManager() { return sapiManager; }
     public StatsManager getStatsManager() { return statsManager; }
+    public ShopManager getShopManager() { return  shopManager; }
 }

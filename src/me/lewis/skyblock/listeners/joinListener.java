@@ -3,6 +3,7 @@ package me.lewis.skyblock.listeners;
 import me.lewis.skyblock.Skyblock;
 import me.lewis.skyblock.sapi.Sapi;
 import me.lewis.skyblock.sapi.SapiManager;
+import me.lewis.skyblock.stats.StatsManager;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
@@ -34,5 +35,9 @@ public class joinListener implements Listener
             }
         }, 5L);
         plugin.updatePlayerCount();
+
+        //chatcolor
+        StatsManager statsManager = plugin.getStatsManager();
+        p.setDisplayName(statsManager.getStats(p).getColor() + p.getName());
     }
 }

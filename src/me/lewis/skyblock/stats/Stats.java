@@ -81,6 +81,23 @@ public class Stats
 
     public double getBalance() { return  getYaml().getInt("balance"); }
 
+    public void setColor(String color)
+    {
+        File pussy = getFile();
+        YamlConfiguration fuck = getYaml();
+        fuck.set("color", color);
+        try
+        {
+            fuck.save(pussy);
+        }
+        catch(Exception e)
+        {
+            e.printStackTrace();
+        }
+    }
+
+    public String getColor() { return getYaml().getString("color"); }
+
     public File getFile()
     {
         return new File(plugin.getDataFolder() + File.separator + "Stats", uuid.toString() + ".yml");

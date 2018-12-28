@@ -1,6 +1,7 @@
 package me.lewis.skyblock.commands;
 
 import me.lewis.skyblock.Skyblock;
+import me.lewis.skyblock.shop.ShopHandler;
 import me.lewis.skyblock.stats.StatsManager;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -24,6 +25,7 @@ public class cmdBuy implements CommandExecutor
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args)
     {
+        ShopHandler shopHandler = new ShopHandler(plugin);
         if(!(sender instanceof Player))
         {
             sender.sendMessage(ChatColor.RED + "Only players can execute this command");
@@ -31,34 +33,9 @@ public class cmdBuy implements CommandExecutor
         }
         else
         {
-            Inventory buyGUI = Bukkit.createInventory(null, 9, ChatColor.GOLD + "Shop GUI");
             Player p = (Player) sender;
-            List<String> lore = new ArrayList();
-
-            //Building Blocks
-            ItemStack building = new ItemStack(Material.GRASS);
-            ItemMeta buildingm = building.getItemMeta();
-            buildingm.setDisplayName(ChatColor.GOLD + "Building Blocks");
-            lore.add(ChatColor.WHITE + "Buy and sell building blocks here!");
-            buildingm.setLore(lore);
-            building.setItemMeta(buildingm);
-            buyGUI.setItem(0, building);
-            lore.clear();
-
-            //Precious Materials
-            ItemStack rare = new ItemStack(Material.DIAMOND);
-            ItemMeta rarem = rare.getItemMeta();
-            rarem.setDisplayName(ChatColor.GOLD + "Precious Materials");
-            lore.add(ChatColor.WHITE + "Buy and sell precious materials here!");
-            rarem.setLore(lore);
-            rare.setItemMeta(rarem);
-            buyGUI.setItem(2, rare);
-            lore.clear();
-
-            //Spawners
-            ItemStack spawners = new ItemStack(Material.MOB_SPAWNER);
-
+            shopHandler.openShop(p);
+            return true;
         }
-        return false;
     }
 }

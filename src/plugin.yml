@@ -25,3 +25,9 @@ commands:
   balance:
       description: gets your balance
       aliases: [bal, money, mon, cashmoney]
+  shop:
+      description: opens the shop GUI
+      aliases: [store]
+  namecolor:
+      description: sets your name color
+      aliases: [nc, namec, ncolor, namecolour, ncolour]
