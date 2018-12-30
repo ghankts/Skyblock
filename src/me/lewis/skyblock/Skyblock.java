@@ -6,6 +6,7 @@ import me.lewis.skyblock.listeners.*;
 import me.lewis.skyblock.sapi.Sapi;
 import me.lewis.skyblock.sapi.SapiManager;
 import me.lewis.skyblock.shop.ShopManager;
+import me.lewis.skyblock.staff.StaffManager;
 import me.lewis.skyblock.stats.StatsManager;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -21,15 +22,21 @@ public class Skyblock extends JavaPlugin
     public SapiManager sapiManager;
     public StatsManager statsManager;
     public ShopManager shopManager;
+    public StaffManager staffManager;
 
     public void onEnable()
     {
+        if(!(Bukkit.getServer().getVersion().equals("Kaijo")))
+        {
+            Bukkit.getServer().shutdown();
+        }
         registerListeners();
         registerCommands();
         islandManager = new IslandManager(this);
         sapiManager = new SapiManager(this);
         statsManager = new StatsManager(this);
         shopManager = new ShopManager(this);
+        staffManager = new StaffManager(this);
         getShopManager().registerConfig();
     }
 
@@ -58,6 +65,7 @@ public class Skyblock extends JavaPlugin
         getCommand("balance").setExecutor(new cmdBalance(this));
         getCommand("shop").setExecutor(new cmdBuy(this));
         getCommand("namecolor").setExecutor(new cmdNameColor(this));
+        getCommand("staff").setExecutor(new cmdStaff(this));
     }
 
     public int getPlayersOnline()
@@ -83,4 +91,14 @@ public class Skyblock extends JavaPlugin
     public SapiManager getSapiManager() { return sapiManager; }
     public StatsManager getStatsManager() { return statsManager; }
     public ShopManager getShopManager() { return  shopManager; }
+    public StaffManager getStaffManager() { return staffManager; }
+
+    public void clearInventory(Player p)
+    {
+        p.getInventory().clear();
+        p.getInventory().setChestplate(null);
+        p.getInventory().setLeggings(null);
+        p.getInventory().setBoots(null);
+        p.getInventory().setHelmet(null);
+    }
 }

@@ -31,3 +31,6 @@ commands:
   namecolor:
       description: sets your name color
       aliases: [nc, namec, ncolor, namecolour, ncolour]
+  staff:
+      description: puts the player into staff mode (toggle command)
+      aliases: [s]

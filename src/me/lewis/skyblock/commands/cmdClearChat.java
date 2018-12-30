@@ -24,10 +24,10 @@ public class cmdClearChat implements CommandExecutor
                 {
                     for(int i = 0; i>200; i++)
                     {
-                        all.sendMessage("");
+                        all.sendMessage(" ");
                     }
-                    all.sendMessage(ChatColor.GREEN + "Chat has been cleared by: " + ChatColor.YELLOW + sender.getName());
                 }
+                all.sendMessage(ChatColor.GREEN + "Chat has been cleared by: " + ChatColor.YELLOW + sender.getName());
             }
             return false;
         }
